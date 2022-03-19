@@ -1,0 +1,58 @@
+#==================================== 
+## Sample configuration file for stratified LD score regression
+## when SNP based heritability enrichment needs to be computed
+#==================================== 
+
+## The LD score regression requires reference dataset to be downloaded
+## (hosted in https://storage.googleapis.com/broad-alkesgroup-public/LDSCORE/)
+## This parameter is the data directory where all the S_LDSC related reference dataset will be downloaded
+## this reference dataset consists of 1000G baseline model, ld scores 
+## computed and shared by the developers (Alkes Price group)
+DataDir=/home/sourya/LDSCORE_DATA
+
+## Input GWAS file (we support hg19 coordinates)
+## for hg38 based GWAS files, we will convert the GWAS to hg19 coordinates using liftover tool
+InpGWASFile=/home/sourya/GWAS_Immune_Studies/Asthma_29785011/UKBB.asthma-2.assoc
+
+## check if the GWAS input file has sample size (N) column.
+## if the sample size column is not present, use this parameter to provide a sample size 
+## (check the GWAS catalog and the corresponding study / publication to retrieve the sample size)
+## if GWAS summary statistics contains sample size information, keep this parameter as blank
+GWASsamplesize=110361
+
+## if the GWAS file is already converted to Sumstats format
+## (may be a prior execution of S_LDSC or any other packages like SLDP)
+## user can put the existing Sumstats formatted file here (.sumstats.gz file)
+## otherwise, keep this parameter blank
+GWASSumStatsFile=
+
+## directory containing the LDSC source code from GitHub
+## user can download the LDSC source code from GitHub using the following command:
+## git clone https://github.com/bulik/ldsc.git
+## a folder "ldsc" would be created, containing the munge_sumstats.py source code (and other codes)
+LDSCCodeDir=/home/sourya/packages/LDSC/ldsc
+
+## output directory to store the S-LDSC results for the current GWAS and current eQTL data
+OutDir=/home/sourya//S_LDSC/Asthma_29785011
+
+## GWAS trait name - custom string
+## the .sumstats file generated from LDSC will have the name ${GWASTraitName}.sumstats.gz
+GWASTraitName=asthma
+
+## set to 1 if in the GWAS Summary statistics, A1 is the increasing allele
+## default = 0
+A1IncAllele=0
+
+## type of eQTL / variant - custom string
+VariantType=DICE_eQTL_CD4N
+
+## input eQTL / variant file
+QTLFile=/home/sourya/DICE_eQTL/CD4N_eQTLs_FDR_0.05_SHORT.bed
+
+## column containing the chromosome name in the input eQTL / variant file
+chrcol=1
+
+## column containing the SNP position in the input eQTL / variant file
+## make sure that the position is with respect to hg19 coordinates
+poscol=2
+
