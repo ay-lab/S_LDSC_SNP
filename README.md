@@ -1,5 +1,7 @@
-# S_LDSC
-Stratified LD score regression analysis
+# S_LDSC_SNP
+Adaptation of Stratified LD score regression (LDSC) 
+to compute enrichment of a set of SNPs
+(such as eQTLs)
 
 Sourya Bhattacharyya
 
@@ -8,6 +10,11 @@ La Jolla Institute for Immunology, La Jolla, CA 92037, USA
 ----------------------
 
 Implements a wrapper for the Stratified LD score regression package (https://github.com/bulik/ldsc), to estimate the enrichment of a set of QTLs (variants) with respect to a reference GWAS summary statistics.
+
+Traditionally, LD score regression computes enrichment of a chromatin annotation, such as ChIP-seq peaks.
+
+Here, we have implemented an interface to take input a list of SNPs (such as eQTLs, eQTLs overlapping chromatin peaks, etc.)
+to compute their enrichment with respect to reference GWAS studies.
 
 Note: Currently the package supports GWAS files with respect to the reference genome hg19 
 (as mentioned in the original Stratified LD score regression package ldsc)
